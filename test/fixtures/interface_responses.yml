@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sid: MyString
+  interface_id: 1
+  response_name: MyString
+  response_type: MyString
+  response_desc: MyString
+  status: 1
+
+two:
+  sid: MyString
+  interface_id: 1
+  response_name: MyString
+  response_type: MyString
+  response_desc: MyString
+  status: 1

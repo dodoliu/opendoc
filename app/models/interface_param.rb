@@ -1,0 +1,2 @@
+class InterfaceParam < ApplicationRecord
+end

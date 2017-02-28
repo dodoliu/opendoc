@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sid: MyString
+  display_name: MyString
+  status: 1
+  expire_date: 2017-02-27 10:27:29
+  memo: MyString
+
+two:
+  sid: MyString
+  display_name: MyString
+  status: 1
+  expire_date: 2017-02-27 10:27:29
+  memo: MyString

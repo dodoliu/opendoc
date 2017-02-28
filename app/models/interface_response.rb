@@ -1,0 +1,2 @@
+class InterfaceResponse < ApplicationRecord
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sid: MyString
+  name: MyString
+  status: 1
+  memo: MyString
+
+two:
+  sid: MyString
+  name: MyString
+  status: 1
+  memo: MyString

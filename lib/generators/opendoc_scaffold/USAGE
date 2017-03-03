@@ -1,0 +1,12 @@
+Description:
+    Generate Controller,Model,View
+
+Example:
+    rails generate opendoc_scaffold Thing
+    ex: rails generate opendoc_scaffold groups
+
+    This will create:
+        views
+        controller
+        model
+        test

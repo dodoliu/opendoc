@@ -1,6 +1,6 @@
 require 'uuidtools'
 
-class <% singular_table_name.capitalize %> < ApplicationRecord
+class <%= singular_table_name.capitalize %> < ApplicationRecord
   enum status: [:archived, :active]
 
   #validates

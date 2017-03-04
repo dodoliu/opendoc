@@ -1,0 +1,4 @@
+<%= form_tag locals[:path], method: 'get', class: 'advanced_form' do |f| %>
+<%= submit_tag '查询' , class: 'btn btn-default' %>
+<%= text_field_tag :q, nil, placeholder: '高级查询', class: 'advanced_query' %>
+<% end %>

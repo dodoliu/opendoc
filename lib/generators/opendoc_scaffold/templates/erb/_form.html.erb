@@ -1,7 +1,7 @@
-<%%= form_for([:backend, @<%= file_name %>])  do |f|%>
+<%%= form_for([:backend, @<%= singular_table_name %>])  do |f|%>
 <div class="box noBg">
     <div class="formbox marginTop">
-        <%%= render 'backend/shared/error', :locals => { :obj => @<%= file_name %> } %>
+        <%%= render 'backend/shared/error', :locals => { :obj => @<%= singular_table_name %> } %>
         <div>
             <%%= f.label :TODO, 'TODO' %>
             <%%= f.text_field :TODO %>
@@ -12,7 +12,7 @@
         </div>
         <div class="button_edit">
             <%%= f.button '提交' , style: 'display:inline-block;margin:0 20px;'%>
-            <%%= link_to '返回', backend_<%= file_name %>_path, class: 'button_edit_a' %>
+            <%%= link_to '返回', backend_<%= table_name %>_path, class: 'button_edit_a' %>
         </div>
     </div>
 </div>

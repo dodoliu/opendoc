@@ -1,0 +1,27 @@
+<div class="box noBg">
+  <div class="tabbox">
+    <%= render 'backend/shared/menu' %>
+    <%= render 'backend/shared/advanced_query', :locals => { :path =>backend_interface_responses_path } %>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th>TODO</th>
+          <th>TODO</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @interface_responses.each do |t| %>
+          <tr>
+            <td><%= t.TODO %></td>
+            <td><%= t.TODO %></td>
+            <td>
+              <%= link_to '编辑', edit_backend_group_path(t), class: 'edit'  %>
+              <%= link_to '删除', backend_group_path(t.id), method: :delete, data: { confirm: '确定删除吗?' }, class: 'edit'  %>
+            </td>            
+          </tr>          
+        <% end %>        
+      </tbody>
+    </table>
+  </div>
+</div>

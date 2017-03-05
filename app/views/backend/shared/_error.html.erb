@@ -1,4 +1,4 @@
-<div class="error_style" style="<%= locals[:obj].errors.count > 0 ? '' : 'display:none'  %> ">
+<div class="bg-danger error_style" style="<%= locals[:obj].errors.count > 0 ? '' : 'display:none'  %> ">
   <% locals[:obj].errors.full_messages.each do |message| %>
   <%= message %> <br/>
   <% end %>

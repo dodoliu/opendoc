@@ -1,0 +1,47 @@
+@import bootstrap-sprockets
+@import bootstrap
+
+$border_color: #e7e7e7
+$background_color: #f8f8f8
+$one_px: 1px
+$four_px: 4px
+$five_px: 5px
+$ten_px: 10px
+$twenty_px: 20px
+$five_hundred_px: 500px
+$fifty_px: 50px
+
+.backend_menu
+  boder: $one_px solid transparent
+  border-color: $border_color
+  border-redius: $four_px
+  background-color: $background_color
+  min-height: $five_hundred_px + $fifty_px * 2
+
+.backend_body
+  @extend .backend_menu
+  margin-left: $five_px
+  float: right
+  width: 82%
+.table_style
+  margin-top: $five_px
+  min-height: $five_hundred_px
+
+//高级查询
+.advanced_top
+  margin-top: $ten_px
+.advanced_form
+  @extend .advanced_top
+  float: right
+.advanced_text
+  display: inline
+  width: 70%
+//分页
+.pagination_style
+  float: right
+
+.edit_style
+  margin-top: $ten_px
+
+.error_style
+  margin-bottom: $ten_px

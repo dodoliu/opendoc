@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OpenDoc</title>
+    <title>API文档在线管理系统</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="container-fluid">
-      <%= render "common/navbar" %>      
-      <%= render "common/backend_menu" %>      
-      <%= render "common/backend_body" %>    
+      <%= render "common/navbar" %>
+      <%= render "common/backend_menu" %>
+      <%= render "common/backend_body" %>
     </div>
     <%= render "common/footer" %>
-    
     <script type="text/javascript">
       // function goto_home() {
       //   location.href = "<%= backend_groups_path %>"

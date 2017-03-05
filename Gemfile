@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 #Begin custom add gems
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'uuidtools'
+gem 'kaminari'
 #End
 
 group :development, :test do

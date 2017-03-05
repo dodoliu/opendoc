@@ -47,7 +47,7 @@ class Backend::<%=  class_name %>Controller < Backend::ApplicationController
 
   private
     def set_<%= singular_table_name %>
-      @<%= singular_table_name %> = <%= singular_table_name.capitalize %>.friendly.find(params[:id])
+      @<%= singular_table_name %> = <%= singular_table_name.capitalize %>.find(params[:id])
     end
     def <%= singular_table_name %>_params
       params.require(:<%= singular_table_name %>).permit(:TODO, :TODO)

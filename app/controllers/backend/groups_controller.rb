@@ -3,10 +3,11 @@ class Backend::GroupsController < Backend::ApplicationController
 
   def index
     q = params[:q]
+    p = params[:page]
     if !q.blank?
-      @groups = Group.name_like(params[:q])
+      @groups = Group.page(p).name_like(params[:q])
     else
-      @groups = Group.all
+      @groups = Group.page(p)
     end
   end
 
@@ -47,9 +48,9 @@ class Backend::GroupsController < Backend::ApplicationController
 
   private
     def set_group
-      @group = Group.friendly.find(params[:id])
+      @group = Group.find(params[:id])
     end
     def group_params
-      params.require(:group).permit(:group_name, :memo)
+      params.require(:group).permit(:group_name, :status, :memo)
     end
 end

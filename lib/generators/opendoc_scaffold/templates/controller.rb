@@ -3,10 +3,11 @@ class Backend::<%=  class_name %>Controller < Backend::ApplicationController
 
   def index
     q = params[:q]
+    p = params[:page]
     if !q.blank?
-      @<%=  singular_name %> = <%= singular_table_name.capitalize %>.name_like(params[:q])
+      @<%=  singular_name %> = <%= singular_table_name.capitalize %>.page(p).name_like(params[:q])
     else
-      @<%= singular_name %> = <%= singular_table_name.capitalize %>.all
+      @<%= singular_name %> = <%= singular_table_name.capitalize %>.page(p)
     end
   end
 

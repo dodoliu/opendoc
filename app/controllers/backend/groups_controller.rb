@@ -51,6 +51,6 @@ class Backend::GroupsController < Backend::ApplicationController
       @group = Group.find(params[:id])
     end
     def group_params
-      params.require(:group).permit(:group_name, :status, :memo)
+      params.require(:group).permit(:group_name, :memo)
     end
 end

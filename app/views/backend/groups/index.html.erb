@@ -1,3 +1,4 @@
+<%= render 'backend/shared/site_map' %>
 <%= link_to '+新增品牌', new_backend_group_path, class: 'btn btn-default advanced_top' %>
 <%= render 'backend/shared/advanced_query', :locals => { :path =>backend_groups_path } %>
 
@@ -20,12 +21,12 @@
       <td>
         <%= link_to '编辑', edit_backend_group_path(t), class: 'btn btn-default btn-xs' %>
         <%= link_to '删除', backend_group_path(t.id), method: :delete, data: { confirm: '确定删除吗?' }, class: 'btn btn-default btn-xs'  %>
+        <%= link_to '接口文档管理', backend_group_interfaces_path(t), class: 'btn btn-default btn-xs' %>
       </td>
     </tr>
   <% end %>
 </tbody>
 </table>
-
 
 <nav aria-label="Page navigation" class="pagination_style">
 <%= paginate @groups %>

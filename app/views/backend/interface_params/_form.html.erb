@@ -1,19 +1,37 @@
-<%= form_for([:backend, @interface_params])  do |f|%>
-<div class="box noBg">
-    <div class="formbox marginTop">
-        <%= render 'backend/shared/error', :locals => { :obj => @interface_params } %>
-        <div>
-            <%= f.label :TODO, 'TODO' %>
-            <%= f.text_field :TODO %>
-        </div>
-        <div>
-            <%= f.label :TODO, 'TODO' %>
-            <%= f.text_field :TODO %>
-        </div>
-        <div class="button_edit">
-            <%= f.button '提交' , style: 'display:inline-block;margin:0 20px;'%>
-            <%= link_to '返回', backend_interface_params_path, class: 'button_edit_a' %>
-        </div>
+<%= render 'backend/shared/site_map' %>
+<%= form_for([:backend, :interface, @interface_param], html:{ class: 'form-horizontal edit_style' })  do |f|%>
+
+<%= render 'backend/shared/error', :locals => { :obj => @interface_param } %>
+
+<div class="form-group">
+    <%= f.label :param_name, '参数名称', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_field :param_name, class: 'form-control', placeholder: '请输入参数名称' %>
     </div>
 </div>
+<div class="form-group">
+    <%= f.label :param_type, '参数类型', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.select :param_type, param_type_enum , {}, { class: 'form-control' } %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :param_must, '是否必须参数', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.select :param_must, param_must_enum.map{ |key,value| [value, key] } , {}, { class: 'form-control' } %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :param_desc, '参数描述', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_field :param_desc, class: 'form-control', placeholder: '请输入参数描述' %>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-10 edit_button_style">
+      <%= f.button '提交' , class: 'btn btn-default' %>
+      <%= link_to '返回', backend_interface_interface_params_path + append_param(params[:group_id]), class: 'btn btn-default' %>
+    </div>
+</div>
+<%= hidden_field_tag 'group_id', params[:group_id] %>
 <% end %>

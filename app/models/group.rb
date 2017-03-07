@@ -1,6 +1,8 @@
 require 'uuidtools'
 
 class Group  < ApplicationRecord
+  has_many :interfaces
+
   enum status: [:archived, :active]
 
   #validates

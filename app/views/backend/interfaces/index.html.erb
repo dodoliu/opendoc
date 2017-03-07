@@ -1,27 +1,39 @@
-<div class="box noBg">
-  <div class="tabbox">
-    <%= render 'backend/shared/menu' %>
-    <%= render 'backend/shared/advanced_query', :locals => { :path =>backend_interfaces_path } %>
-    <table cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th>TODO</th>
-          <th>TODO</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @interfaces.each do |t| %>
-          <tr>
-            <td><%= t.TODO %></td>
-            <td><%= t.TODO %></td>
-            <td>
-              <%= link_to '编辑', edit_backend_group_path(t), class: 'edit'  %>
-              <%= link_to '删除', backend_group_path(t.id), method: :delete, data: { confirm: '确定删除吗?' }, class: 'edit'  %>
-            </td>            
-          </tr>          
-        <% end %>        
-      </tbody>
-    </table>
-  </div>
+<%= render 'backend/shared/site_map' %>
+<%= link_to '+新增接口文档', new_backend_group_interface_path, class: 'btn btn-default advanced_top' %>
+<%= render 'backend/shared/advanced_query', :locals => { :path =>backend_group_interfaces_path } %>
+
+<div class="table_style">
+<table class="table">
+  <thead>
+    <tr>
+      <th class="nobr">接口名称</th>
+      <th class="nobr">域名</th>
+      <th class="nobr">请求方式</th>
+      <th class="nobr">返回值格式</th>
+      <th class="nobr">状态</th>
+      <th class="nobr">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @interfaces.each do |t| %>
+      <tr>
+        <td><%= t.interface_name %></td>
+        <td><%= t.domain %></td>
+        <td><%= t.request_type %></td>
+        <td><%= t.response_type %></td>
+        <td><%= find_status(t.status) %></td>
+        <td>
+          <%= link_to '编辑', edit_backend_group_interface_path(params[:group_id], t.id), class: 'edit'  %>
+          <%= link_to '删除', backend_group_interface_path(params[:group_id], t.id), method: :delete, data: { confirm: '确定删除吗?' }, class: 'edit'  %>
+          <%= link_to '接口参数管理', backend_interface_interface_params_path(t) + append_param(params[:group_id]), class: 'edit' %>
+          <%= link_to '接口返回结果管理', backend_interface_interface_responses_path(t) + append_param(params[:group_id]), class: 'edit' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<nav aria-label="Page navigation" class="pagination_style">
+<%= paginate @interfaces %>
 </div>

@@ -1,27 +1,31 @@
 class Backend::InterfaceParamsController < Backend::ApplicationController
   before_action :set_interface_param, only: [:edit, :update, :destroy]
+  before_action :find_interface, only: [:create]
+
+  include ApplicationHelper
 
   def index
     q = params[:q]
+    p = params[:page]
     if !q.blank?
-      @interface_params = Interface_param.name_like(params[:q])
+      @interface_params = InterfaceParam.page(p).name_like(params[:q])
     else
-      @interface_params = Interface_param.all
+      @interface_params = InterfaceParam.page(p)
     end
   end
 
   def new
-    @interface_param = Interface_param.new
+    @interface_param = InterfaceParam.new
   end
 
   def edit
   end
 
   def create
-    @interface_param = Interface_param.set_attribute interface_param_params
+    @interface_param = @interface.interface_params.set_attribute interface_param_params
     respond_to do |format|
       if @interface_param.save
-        format.html { redirect_to backend_interface_params_url, notice: '新增成功!' }
+        format.html { redirect_to backend_interface_interface_params_url + append_param(params[:group_id]), notice: '新增成功!' }
       else
         format.html { render :new }
       end
@@ -31,7 +35,7 @@ class Backend::InterfaceParamsController < Backend::ApplicationController
   def update
     respond_to do |format|
       if @interface_param.update(interface_param_params)
-        format.html { redirect_to backend_interface_params_url, notice: '修改成功!' }
+        format.html { redirect_to backend_interface_interface_params_url+ append_param(params[:group_id]), notice: '修改成功!' }
       else
         format.html { render :edit }
       end
@@ -39,17 +43,20 @@ class Backend::InterfaceParamsController < Backend::ApplicationController
   end
 
   def destroy
-    Interface_param.delete(@interface_param)
+    InterfaceParam.delete(@interface_param)
     respond_to do |format|
-      format.html { redirect_to backend_interface_params_url, notice: '删除成功!' }
+      format.html { redirect_to backend_interface_interface_params_url+ append_param(params[:group_id]), notice: '删除成功!' }
     end
   end
 
   private
+    def find_interface
+      @interface = Interface.find(params[:interface_id])
+    end
     def set_interface_param
-      @interface_param = Interface_param.friendly.find(params[:id])
+      @interface_param = InterfaceParam.find(params[:id])
     end
     def interface_param_params
-      params.require(:interface_param).permit(:TODO, :TODO)
+      params.require(:interface_param).permit(:param_name, :param_type, :param_must, :param_desc)
     end
 end

@@ -1,19 +1,61 @@
-<%= form_for([:backend, @interfaces])  do |f|%>
-<div class="box noBg">
-    <div class="formbox marginTop">
-        <%= render 'backend/shared/error', :locals => { :obj => @interfaces } %>
-        <div>
-            <%= f.label :TODO, 'TODO' %>
-            <%= f.text_field :TODO %>
-        </div>
-        <div>
-            <%= f.label :TODO, 'TODO' %>
-            <%= f.text_field :TODO %>
-        </div>
-        <div class="button_edit">
-            <%= f.button '提交' , style: 'display:inline-block;margin:0 20px;'%>
-            <%= link_to '返回', backend_interfaces_path, class: 'button_edit_a' %>
-        </div>
+<%= render 'backend/shared/site_map' %>
+<%= form_for([:backend, :group, @interface], html:{ class: 'form-horizontal edit_style' })  do |f|%>
+
+<%= render 'backend/shared/error', :locals => { :obj => @interface } %>
+
+<div class="form-group">
+    <%= f.label :interface_name, '接口名称', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_field :interface_name, class: 'form-control', placeholder: '请输入接口名称' %>
     </div>
 </div>
+<div class="form-group">
+    <%= f.label :domain, '域名', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_field :domain, class: 'form-control', placeholder: '请输入域名' %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :product_url, '生产url', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_field :product_url, class: 'form-control', placeholder: '请输入生产url' %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :test_url, '测试url', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_field :test_url, class: 'form-control', placeholder: '请输入测试url' %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :request_type, '请求方式', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.select :request_type, request_type_enum , {}, { class: 'form-control' } %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :response_type, '返回值格式', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.select :response_type, response_type_enum , {}, { class: 'form-control' } %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :response_content, '返回结果', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_area :response_content, rows: 10, class: 'form-control' %>
+    </div>
+</div>
+<div class="form-group">
+    <%= f.label :demo, 'demo', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_area :demo, rows: 10, class: 'form-control' %>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-10 edit_button_style">
+      <%= f.button '提交' , class: 'btn btn-default' %>
+      <%= link_to '返回', backend_group_interfaces_path, class: 'btn btn-default' %>
+    </div>
+</div>
+
 <% end %>

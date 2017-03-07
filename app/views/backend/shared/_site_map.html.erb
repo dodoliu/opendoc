@@ -1,0 +1,13 @@
+<% if controller_name.eql? 'groups' %>
+<%= label_tag '品牌管理', nil, class: 'site_map_style' %> 
+<% else %>
+  <%= link_to '品牌管理', backend_groups_path, class: 'btn' %>
+  <% if !find_parent_controller_name.eql? 'groups' %>
+    >>&nbsp;&nbsp;<%= link_to '接口文档管理', backend_group_interfaces_path(params[:group_id]), class: 'btn' %>
+  <% end %>
+
+  <% if !site_map(controller_name).to_s.empty? %>
+      >>&nbsp;&nbsp;<%= label_tag site_map(controller_name) %>
+  <% end %>
+<% end %>
+<br/>

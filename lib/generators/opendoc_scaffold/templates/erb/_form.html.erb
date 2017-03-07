@@ -1,19 +1,30 @@
-<%%= form_for([:backend, @<%= singular_table_name %>])  do |f|%>
-<div class="box noBg">
-    <div class="formbox marginTop">
-        <%%= render 'backend/shared/error', :locals => { :obj => @<%= singular_table_name %> } %>
-        <div>
-            <%%= f.label :TODO, 'TODO' %>
-            <%%= f.text_field :TODO %>
-        </div>
-        <div>
-            <%%= f.label :TODO, 'TODO' %>
-            <%%= f.text_field :TODO %>
-        </div>
-        <div class="button_edit">
-            <%%= f.button '提交' , style: 'display:inline-block;margin:0 20px;'%>
-            <%%= link_to '返回', backend_<%= table_name %>_path, class: 'button_edit_a' %>
-        </div>
+<%%= render 'backend/shared/site_map' %>
+<%%= form_for([:backend, @<%= singular_table_name %>], html:{ class: 'form-horizontal edit_style' })  do |f|%>
+
+<%%= render 'backend/shared/error', :locals => { :obj => @<%= singular_table_name %> } %>
+
+<div class="form-group">
+    <%%= f.label :TODO, 'TODO', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%%= f.text_field :TODO, class: 'form-control', placeholder: 'TODO' %>
+    </div>
+</div>
+<div class="form-group">
+    <%%= f.label :status, '状态', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%%= f.select :status, status_enum.map{ |key,value| [value, key] } , {}, { class: 'form-control' } %>
+    </div>
+</div>
+<div class="form-group">
+    <%%= f.label :memo, 'TODO', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%%= f.text_field :memo, class: 'form-control', placeholder: 'TODO' %>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-10 edit_button_style">
+      <%%= f.button '提交' , class: 'btn btn-default' %>
+      <%%= link_to '返回', backend_<%= table_name %>_path, class: 'btn btn-default' %>
     </div>
 </div>
 <%% end %>

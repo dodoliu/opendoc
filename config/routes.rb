@@ -7,12 +7,12 @@ Rails.application.routes.draw do
 
   namespace :backend do
     root 'groups#index'
+
     resources :groups do
       resources :interfaces
     end
     resources :interfaces do
-      resources :interface_params
-      resources :interface_responses
+      resources :interface_params, :interface_responses
     end
     resources :members
   end

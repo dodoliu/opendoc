@@ -22,6 +22,7 @@ class Group  < ApplicationRecord
   def self.set_attribute(group_params)
     group = Group.new(group_params)
     group.sid = UUIDTools::UUID.timestamp_create
+    group.status = :active
     group
   end
 end

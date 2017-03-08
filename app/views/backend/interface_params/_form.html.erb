@@ -3,35 +3,12 @@
 
 <%= render 'backend/shared/error', :locals => { :obj => @interface_param } %>
 
-<div class="form-group">
-    <%= f.label :param_name, '参数名称', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :param_name, class: 'form-control', placeholder: '请输入参数名称' %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :param_type, '参数类型', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.select :param_type, param_type_enum , {}, { class: 'form-control' } %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :param_must, '是否必须参数', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.select :param_must, param_must_enum.map{ |key,value| [value, key] } , {}, { class: 'form-control' } %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :param_desc, '参数描述', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :param_desc, class: 'form-control', placeholder: '请输入参数描述' %>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-10 edit_button_style">
-      <%= f.button '提交' , class: 'btn btn-default' %>
-      <%= link_to '返回', backend_interface_interface_params_path + append_param(params[:group_id]), class: 'btn btn-default' %>
-    </div>
-</div>
+<%= bootstrap_text_field f, :param_name, '参数名称', '请输入参数名称' %>
+<%= bootstrap_select f, :param_type, '参数类型', param_type_enum %>
+<%= bootstrap_select f, :param_must, '是否必须参数', param_must_enum.map{ |key,value| [value, key] } %>
+<%= bootstrap_text_field f, :param_desc, '参数描述', '请输入参数描述' %>
+
+<%= bootstrap_commit_back_button(f, backend_interface_interface_params_path + append_param(params[:group_id])) %>
+
 <%= hidden_field_tag 'group_id', params[:group_id] %>
 <% end %>

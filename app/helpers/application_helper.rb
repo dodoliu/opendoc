@@ -54,4 +54,41 @@ module ApplicationHelper
     "?group_id=#{param}"
   end
 
+  #定义自定义的bootstrap控件
+  %w{ text_field select text_area }.each do |item|
+    define_method("bootstrap_#{item}") do |tag, tag_field, field_name, *args|
+      bootstrap_field(tag, tag_field, field_name) do
+        case item
+        when 'text_field'
+          tag.send(item, tag_field, class: 'form-control', placeholder: args[0])
+        when 'select'
+          tag.send(item, tag_field, args[0] , {}, { class: 'form-control' })
+        when 'text_area'
+          tag.send(item, tag_field, rows: 10, class: 'form-control')
+        end       
+      end
+    end
+  end
+
+  def bootstrap_commit_back_button(tag, url)
+    content_tag :div, class: 'form-group' do
+      content_tag :div, class: 'col-sm-10 edit_button_style' do
+        tag.button('提交', class: 'btn btn-default') + ' ' +
+        link_to('返回', url, class: 'btn btn-default')
+      end
+    end
+  end
+
+  private
+    def bootstrap_field(tag, tag_field, field_name, &block)
+      content_tag :div, class: 'form-group' do
+        tag.label(tag_field, field_name, class: 'col-sm-1 control-label') +
+        content_tag(:div, class: 'col-sm-10') do
+          yield
+        end
+      end
+    end
+
+
+
 end

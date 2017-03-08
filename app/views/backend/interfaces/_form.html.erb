@@ -3,59 +3,16 @@
 
 <%= render 'backend/shared/error', :locals => { :obj => @interface } %>
 
-<div class="form-group">
-    <%= f.label :interface_name, '接口名称', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :interface_name, class: 'form-control', placeholder: '请输入接口名称' %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :domain, '域名', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :domain, class: 'form-control', placeholder: '请输入域名' %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :product_url, '生产url', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :product_url, class: 'form-control', placeholder: '请输入生产url' %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :test_url, '测试url', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :test_url, class: 'form-control', placeholder: '请输入测试url' %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :request_type, '请求方式', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.select :request_type, request_type_enum , {}, { class: 'form-control' } %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :response_type, '返回值格式', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.select :response_type, response_type_enum , {}, { class: 'form-control' } %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :response_content, '返回结果', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_area :response_content, rows: 10, class: 'form-control' %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :demo, 'demo', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_area :demo, rows: 10, class: 'form-control' %>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-10 edit_button_style">
-      <%= f.button '提交' , class: 'btn btn-default' %>
-      <%= link_to '返回', backend_group_interfaces_path, class: 'btn btn-default' %>
-    </div>
-</div>
+
+<%= bootstrap_text_field f, :interface_name, '接口名称', '请输入接口名称' %>
+<%= bootstrap_text_field f, :domain, '域名', '请输入域名' %>
+<%= bootstrap_text_field f, :product_url, '生产url', '请输入生产url' %>
+<%= bootstrap_text_field f, :test_url, '测试url', '请输入测试url' %>
+<%= bootstrap_select f, :request_type, '请求方式', request_type_enum %>
+<%= bootstrap_select f, :response_type, '返回值格式', response_type_enum %>
+<%= bootstrap_text_area f, :response_content, '返回结果' %>
+<%= bootstrap_text_area f, :demo, 'demo' %>
+
+<%= bootstrap_commit_back_button(f, backend_group_interfaces_path) %>
 
 <% end %>

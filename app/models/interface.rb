@@ -3,6 +3,7 @@ require 'uuidtools'
 class Interface < ApplicationRecord
   belongs_to :group
   has_many :interface_params
+  has_many :interface_responses
 
   enum status: [:archived, :active]
 

@@ -26,7 +26,7 @@
           <%= link_to '编辑', edit_backend_group_interface_path(params[:group_id], t.id), class: 'edit'  %>
           <%= link_to '删除', backend_group_interface_path(params[:group_id], t.id), method: :delete, data: { confirm: '确定删除吗?' }, class: 'edit'  %>
           <%= link_to '接口参数管理', backend_interface_interface_params_path(t) + append_param(params[:group_id]), class: 'edit' %>
-          <%= link_to '接口返回结果管理', backend_interface_interface_responses_path(t) + append_param(params[:group_id]), class: 'edit' %>
+          <%= link_to '接口返回参数管理', backend_interface_interface_responses_path(t) + append_param(params[:group_id]), class: 'edit' %>
         </td>
       </tr>
     <% end %>

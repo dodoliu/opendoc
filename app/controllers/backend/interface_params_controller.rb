@@ -8,9 +8,9 @@ class Backend::InterfaceParamsController < Backend::ApplicationController
     q = params[:q]
     p = params[:page]
     if !q.blank?
-      @interface_params = InterfaceParam.page(p).name_like(params[:q])
+      @interface_params = InterfaceParam.page(p).where(interface_id: params[:interface_id]).name_like(params[:q])
     else
-      @interface_params = InterfaceParam.page(p)
+      @interface_params = InterfaceParam.page(p).where(interface_id: params[:interface_id])
     end
   end
 

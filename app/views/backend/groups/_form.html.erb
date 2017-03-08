@@ -3,23 +3,16 @@
 
 <%= render 'backend/shared/error', :locals => { :obj => @group } %>
 
-<div class="form-group">
-    <%= f.label :group_name, '品牌', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :group_name, class: 'form-control', placeholder: '请输入品牌' %>
-    </div>
-</div>
-<div class="form-group">
-    <%= f.label :memo, '备注', class: 'col-sm-1 control-label' %>
-    <div class="col-sm-10">
-        <%= f.text_field :memo, class: 'form-control', placeholder: '请输入备注' %>
-    </div>
-</div>
+<%= bootstrap_text_field f, :group_name, '品牌', '请输入品牌' %>
+<%= bootstrap_text_field f, :memo, '备注', '请输入备注' %>
+
 <div class="form-group">
     <div class="col-sm-10 edit_button_style">
       <%= f.button '提交' , class: 'btn btn-default' %>
       <%= link_to '返回', backend_groups_path, class: 'btn btn-default' %>
     </div>
 </div>
+
+<%= bootstrap_commit_back_button(f, backend_groups_path) %>
 
 <% end %>

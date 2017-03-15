@@ -7,7 +7,15 @@ class Backend::GroupsController < Backend::ApplicationController
     if !q.blank?
       @groups = Group.page(p).name_like(params[:q])
     else
-      @groups = Group.page(p)
+      if params[:all]
+        @groups = Group.all.map { |e| [e.id, e.group_name] }
+      else
+        @groups = Group.page(p)
+      end
+    end
+    respond_to do |format|
+      format.html
+      format.json {render json: @groups}
     end
   end
 

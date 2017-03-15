@@ -1,0 +1,7 @@
+<div id="div_groups" style="display:none">
+  <div class="checkbox ck_style" v-for="item in groups">
+    <label>
+      <input type="checkbox" id="ck_group_{{item[0]}}" v-on:click="add_group"> {{item[1]}}
+    </label>
+  </div>
+</div>

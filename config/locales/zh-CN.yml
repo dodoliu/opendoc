@@ -82,3 +82,7 @@ zh-CN:
         response_name: '参数名称'
         response_type: '参数类型'
         response_desc: '参数描述'
+      member:
+        display_name: '用户名称'
+        expire_date: 'API有效期'
+        memo: '备注'

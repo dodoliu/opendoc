@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Opendoc</title>
+    <title>API文档在线管理系统</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'front', 'data-turbolinks-track': 'reload' %>
+    <script type='text/javascript'>
+      window.urls = {
+        home_interface: '<%= home_interface_info_path %>'
+      }
+    </script>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="container-fluid" id='vue_div'>
+      <%= render "common/navbar" %>
+      <%= render "common/front_menu" %>
+      <%= render "common/front_body" %>
+    </div>
+    <%= render "common/footer" %>
   </body>
 </html>

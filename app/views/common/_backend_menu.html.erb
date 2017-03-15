@@ -1,6 +1,12 @@
 <div class="col-md-2 backend_menu">
-    <h4>
-      <%= link_to '品牌管理', backend_groups_path %>
-    </h4>
-    <h4>用户管理</h4>
+  <ul class="nav nav-pills nav-stacked">
+    <li class="<%= 'active' if request.url.include? 'group' %>">
+      <%= link_to '品牌管理', backend_groups_path %>  
+    </li>
+    <li class="<%= 'active' if request.url.include? 'members' %>">
+      <%= link_to '用户管理', backend_members_path %>
+    </li>
+  </ul>
 </div>
+
+

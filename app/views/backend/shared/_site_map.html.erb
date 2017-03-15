@@ -1,13 +1,18 @@
-<% if controller_name.eql? 'groups' %>
-<%= label_tag '品牌管理', nil, class: 'site_map_style' %> 
-<% else %>
-  <%= link_to '品牌管理', backend_groups_path, class: 'btn' %>
-  <% if !find_parent_controller_name.eql? 'groups' %>
-    >>&nbsp;&nbsp;<%= link_to '接口文档管理', backend_group_interfaces_path(params[:group_id]), class: 'btn' %>
-  <% end %>
+<ol class="breadcrumb">
 
-  <% if !site_map(controller_name).to_s.empty? %>
-      >>&nbsp;&nbsp;<%= label_tag site_map(controller_name) %>
+<% if controller_name.eql? 'members' %>
+  <li><%= label_tag '用户管理', nil, class: 'site_map_style' %></li>
+<% else %>
+  <% if controller_name.eql? 'groups' %>
+    <li><%= label_tag '品牌管理', nil, class: 'site_map_style' %></li>
+  <% else %>
+    <li><%= link_to '品牌管理', backend_groups_path, class: 'btn' %></li>
+    <% if !find_parent_controller_name.eql? 'groups' %>
+      <li><%= link_to '接口文档管理', backend_group_interfaces_path(params[:group_id]), class: 'btn' %></li>
+    <% end %>
+    <% if !site_map(controller_name).to_s.empty? %>
+        <li><%= label_tag site_map(controller_name) %></li>
+    <% end %>
   <% end %>
-<% end %>
-<br/>
+<% end %>  
+</ol>

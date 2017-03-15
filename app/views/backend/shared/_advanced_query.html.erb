@@ -1,5 +1,7 @@
 <%= form_tag locals[:path], method: 'get', class: 'advanced_form' do |f| %>
 <%= text_field_tag :q, nil, placeholder: '高级查询', class: 'form-control advanced_text' %>
 <%= submit_tag '查询' , class: 'btn btn-default' %>
+<% if controller_name != 'members' %>
 <%= hidden_field_tag 'group_id', params[:group_id] %>
+<% end %>
 <% end %>

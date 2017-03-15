@@ -1,0 +1,29 @@
+<div class="col-md-2 backend_menu">
+<div class="panel-group" id="accordion">
+<% @groups.each do |g| %>
+   <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" 
+                href="#collapse<%= g.id %>">
+                <%= g.group_name %>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse<%= g.id %>" class="panel-collapse collapse in">
+            <div class="panel-body">
+                  <ul class="nav nav-pills nav-stacked">
+                    <% @interfaces.each do |i| %>
+                    <% if i.group_id.eql?(g.id) %>
+                    <li>
+                    <%= link_to i.interface_name, 'javascript:void(0)', 'v-on:click': 'get_interface', 'data-interfacesid': i.sid %>
+                    </li>
+                    <% end %>
+                    <% end %>  
+                  </ul>
+            </div>
+        </div>
+    </div>
+<% end %>
+</div>
+</div>

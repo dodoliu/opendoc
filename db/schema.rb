@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228030804) do
+ActiveRecord::Schema.define(version: 20170308105503) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "sid",        limit: 50,               comment: "sid"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20170228030804) do
     t.datetime "updated_at",             null: false
     t.index ["group_name", "status"], name: "ix_name_status", using: :btree
     t.index ["id"], name: "index_groups_on_id", using: :btree
+  end
+
+  create_table "groups_members", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "group_id"
+    t.integer "member_id"
+    t.index ["group_id", "member_id"], name: "ix_group_id_member_id", using: :btree
   end
 
   create_table "interface_params", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

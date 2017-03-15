@@ -2,11 +2,12 @@ require 'uuidtools'
 
 class Group  < ApplicationRecord
   has_many :interfaces
+  has_and_belongs_to_many :members
 
   enum status: [:archived, :active]
 
   #validates
-  validates :group_name, presence: true, length: { maximum: 50 }
+  validates :group_name, uniqueness: true, presence: true, length: { maximum: 50 }
 
   #scope
   default_scope { where("status>?", Group.statuses[:archived]) }

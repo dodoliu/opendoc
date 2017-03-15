@@ -3,10 +3,11 @@ class Backend::MembersController < Backend::ApplicationController
 
   def index
     q = params[:q]
+    p = params[:page]
     if !q.blank?
-      @members = Member.name_like(params[:q])
+      @members = Member.page(p).name_like(params[:q])
     else
-      @members = Member.all
+      @members = Member.page(p)
     end
   end
 
@@ -45,11 +46,36 @@ class Backend::MembersController < Backend::ApplicationController
     end
   end
 
+  # #添加品牌和用户的关联
+  # def add_group_member
+  #   member, group = Member.find(params[:member_id]), Group.find(params[:group_id])
+  #   success = false
+  #   if !member.blank? and !group.blank?
+  #     member.groups << group     
+  #     success = true if member.save!
+  #   end
+  #   respond_to do |format|
+  #     format.json { render json: { success: "#{success}" } }
+  #   end
+  # end
+
+  
+  # def add_groups
+    
+  # end
+
+
+
+  # def add_apis
+    
+  # end
+
+
   private
     def set_member
-      @member = Member.friendly.find(params[:id])
+      @member = Member.find(params[:id])
     end
     def member_params
-      params.require(:member).permit(:TODO, :TODO)
+      params.require(:member).permit(:display_name, :expire_date, :memo)
     end
 end

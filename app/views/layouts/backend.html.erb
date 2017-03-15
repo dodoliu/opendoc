@@ -5,6 +5,13 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type='text/javascript'>
+      window.urls = {
+        groups_json: '/backend/groups.json',        
+        groups_members: '<%= backend_groups_members_path %>',
+        home_index: '<%= root_path %>',
+      }
+    </script>
   </head>
   <body>
     <div class="container-fluid">

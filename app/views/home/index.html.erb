@@ -1,2 +1,47 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<ul class="list-group">
+  <li class="list-group-item disabled">{{ice.interface.interface_name}}</li>
+  <li class="list-group-item"><label>域名:</label>  {{ice.interface.domain}}</li>
+  <li class="list-group-item"><label>生产URL:</label>  {{ice.interface.product_url}}</li>
+  <li class="list-group-item"><label>测试URL:</label>  {{ice.interface.test_url}}</li>
+
+  <li class="list-group-item disabled">请求参数</li>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>参数名称</th>
+        <th>参数类型</th>
+        <th>是否必须参数</th>
+        <th>参数描述</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr v-for="item in ice.interface_params">
+          <td>{{item.param_name}}</td>
+          <td>{{item.param_type}}</td>
+          <td>{{item.param_must}}</td>
+          <td>{{item.param_desc}}</td>
+        </tr>
+    </tbody>
+  </table>
+  <li class="list-group-item disabled">返回参数</li>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>参数名称</th>
+      <th>参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr v-for="item in ice.interface_responses">
+        <td>{{item.response_name}}</td>
+        <td>{{item.response_type}}</td>
+      </tr>
+    </tbody>
+  </table>  
+  <li class="list-group-item disabled">调用示例</li>
+  
+</ul>
+
+
+
+<script type='text/javascript' src="<%= asset_path 'home.js' %>"></script>

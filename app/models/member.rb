@@ -1,15 +1,16 @@
 require 'uuidtools'
 
 class Member < ApplicationRecord
+  has_and_belongs_to_many :groups
+
   enum status: [:archived, :active]
 
   #validates
-  validates :TODO, presence: true, length: { maximum: 50 }
-  validates :TODO, numericality: true
+  validates :display_name, uniqueness: true, presence: true, length: { maximum: 50 }
 
   #scope
   default_scope { where("status>?", Member.statuses[:archived]) }
-  scope :name_like, ->(name){ where "name like ? ", "%#{sanitize_sql_like(name)}%" }  #防sql注入
+  scope :name_like, ->(name){ where "display_name like ? ", "%#{sanitize_sql_like(name)}%" }  #防sql注入
 
   #假删除
   def self.delete(member)

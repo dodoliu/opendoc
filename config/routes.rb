@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   root 'home#index'
-  get  'home/interface_info'=> 'home#interface_info'
+  get 'home/interfaces' => 'home#interfaces'
+  get 'home/interface_info' => 'home#interface_info'
 
   namespace :backend do
     root 'groups#index'

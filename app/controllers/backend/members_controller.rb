@@ -46,31 +46,6 @@ class Backend::MembersController < Backend::ApplicationController
     end
   end
 
-  # #添加品牌和用户的关联
-  # def add_group_member
-  #   member, group = Member.find(params[:member_id]), Group.find(params[:group_id])
-  #   success = false
-  #   if !member.blank? and !group.blank?
-  #     member.groups << group     
-  #     success = true if member.save!
-  #   end
-  #   respond_to do |format|
-  #     format.json { render json: { success: "#{success}" } }
-  #   end
-  # end
-
-  
-  # def add_groups
-    
-  # end
-
-
-
-  # def add_apis
-    
-  # end
-
-
   private
     def set_member
       @member = Member.find(params[:id])

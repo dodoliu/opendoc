@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
   <head>
     <title>API文档在线管理系统</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'devise_style', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'front', 'data-turbolinks-track': 'reload' %>
     <script type='text/javascript'>
       window.urls = {
@@ -14,8 +15,16 @@
   <body>
     <div class="container-fluid" id='vue_div'>
       <%= render "common/navbar" %>
+      <% if request.url.include?('home/interfaces') %>
       <%= render "common/front_menu" %>
-      <%= render "common/front_body" %>
+      <%= render "common/front_body" %>      
+      <% else %>
+      <div id="div_notice_alert">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+        <%= yield %>
+      <% end %>
     </div>
     <%= render "common/footer" %>
   </body>

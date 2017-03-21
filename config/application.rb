@@ -15,5 +15,14 @@ module Opendoc
     config.i18n.default_locale = 'zh-CN'
     #去除rails自带的error样式
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|  html_tag }
+
+    config.cache_store = :redis_store, {
+      host: "localhost",
+      port: 6379,
+      db: 0
+      # password: "mysecret",
+      # namespace: "cache"
+    }
+
   end
 end

@@ -37,9 +37,19 @@ gem 'jbuilder', '~> 2.5'
 
 #Begin custom add gems
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'uuidtools'
-gem 'kaminari'
-gem 'devise'
+gem 'uuidtools' #唯一标识
+gem 'kaminari' #分页
+gem 'devise' #登陆注册
+
+# gem 'sidekiq'
+
+gem 'rack-mini-profiler' #监控页面性能
+
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
+
 #End
 
 group :development, :test do

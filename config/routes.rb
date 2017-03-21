@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'home/interfaces' => 'home#interfaces'
   get 'home/interface_info' => 'home#interface_info'
 
+  # require 'sidekiq/web'
+  # mount sidekiq::web => '/sidekiq'
+
   namespace :backend do
     root 'groups#index'
     resources :groups do

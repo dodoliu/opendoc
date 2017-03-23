@@ -48,7 +48,7 @@ gem 'rack-mini-profiler' #监控页面性能
 gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
-gem 'redis-rack-cache'
+# gem 'redis-rack-cache'
 
 #End
 

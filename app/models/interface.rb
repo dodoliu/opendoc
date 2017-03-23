@@ -1,6 +1,9 @@
 require 'uuidtools'
 
 class Interface < ApplicationRecord
+  after_save :clear_redis
+  after_destroy :clear_redis
+
   belongs_to :group
   has_many :interface_params
   has_many :interface_responses
@@ -26,5 +29,10 @@ class Interface < ApplicationRecord
     interface.sid = UUIDTools::UUID.timestamp_create
     interface.status = :active      
     interface
+  end
+
+  #清理redis缓存
+  def clear_redis
+    $redis.set("interface_#{sid}", '')
   end
 end

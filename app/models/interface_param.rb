@@ -1,6 +1,9 @@
 require 'uuidtools'
 
 class InterfaceParam < ApplicationRecord
+  after_save :clear_redis
+  after_destroy :clear_redis
+
   belongs_to :interface
 
   enum status: [:archived, :active]
@@ -23,5 +26,10 @@ class InterfaceParam < ApplicationRecord
     interface_param.sid = UUIDTools::UUID.timestamp_create
     interface_param.status = :active      
     interface_param
+  end
+
+  #清理redis缓存
+  def clear_redis
+    $redis.set("interface_params_#{interface_id}", '')
   end
 end

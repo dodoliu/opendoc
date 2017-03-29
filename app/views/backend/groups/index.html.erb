@@ -19,7 +19,9 @@
       <td><%= find_status(t.status) %></td>
       <td><%= t.memo %></td>
       <td>
-        <%= link_to '编辑', edit_backend_group_path(t), class: 'btn btn-default btn-xs' %>
+        <% if can? :update, t %>        
+          <%= link_to '编辑', edit_backend_group_path(t), class: 'btn btn-default btn-xs' %>
+        <% end %>
         <%= link_to '删除', backend_group_path(t.id), method: :delete, data: { confirm: '确定删除吗?' }, class: 'btn btn-default btn-xs'  %>
         <%= link_to '接口文档管理', backend_group_interfaces_path(t), class: 'btn btn-default btn-xs' %>
       </td>

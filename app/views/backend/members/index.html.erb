@@ -1,12 +1,12 @@
 <%= render 'backend/shared/site_map' %>
-<%= link_to '+新增用户', new_backend_member_path, class: 'btn btn-default advanced_top' %>
+<%= link_to '+新增调用者', new_backend_member_path, class: 'btn btn-default advanced_top' %>
 <%= render 'backend/shared/advanced_query', :locals => { :path =>backend_members_path } %>
 
 <div class="table_style">
 <table class="table">
   <thead>
     <tr>
-      <th>用户名称</th>
+      <th>调用者名称</th>
       <th>接口过期时间</th>
       <th>操作</th>
     </tr>

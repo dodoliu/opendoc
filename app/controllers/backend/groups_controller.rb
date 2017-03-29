@@ -1,64 +1,66 @@
-class Backend::GroupsController < Backend::ApplicationController
-  before_action :set_group, only: [:edit, :update, :destroy]
+module Backend
+  class GroupsController < ApplicationController        
+    before_action :set_group, only: [:edit, :update, :destroy]
 
-  def index
-    q = params[:q]
-    p = params[:page]
-    if !q.blank?
-      @groups = Group.page(p).name_like(params[:q])
-    else
-      if params[:all]
-        @groups = Group.all.map { |e| [e.id, e.group_name] }
+    def index
+      q = params[:q]
+      p = params[:page]
+      if !q.blank?
+        @groups = Group.page(p).name_like(params[:q])
       else
-        @groups = Group.page(p)
+        if params[:all]
+          @groups = Group.all.map { |e| [e.id, e.group_name] }
+        else
+          @groups = Group.page(p)
+        end
+      end
+      respond_to do |format|
+        format.html
+        format.json {render json: @groups}
       end
     end
-    respond_to do |format|
-      format.html
-      format.json {render json: @groups}
+
+    def new
+      @group = Group.new
     end
-  end
 
-  def new
-    @group = Group.new
-  end
+    def edit
+    end
 
-  def edit
-  end
-
-  def create
-    @group = Group.set_attribute group_params
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to backend_groups_url, notice: '新增成功!' }
-      else
-        format.html { render :new }
+    def create
+      @group = Group.set_attribute group_params
+      respond_to do |format|
+        if @group.save
+          format.html { redirect_to backend_groups_url, notice: '新增成功!' }
+        else
+          format.html { render :new }
+        end
       end
     end
-  end
 
-  def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to backend_groups_url, notice: '修改成功!' }
-      else
-        format.html { render :edit }
+    def update
+      respond_to do |format|
+        if @group.update(group_params)
+          format.html { redirect_to backend_groups_url, notice: '修改成功!' }
+        else
+          format.html { render :edit }
+        end
       end
     end
-  end
 
-  def destroy
-    Group.delete(@group)
-    respond_to do |format|
-      format.html { redirect_to backend_groups_url, notice: '删除成功!' }
+    def destroy
+      Group.delete(@group)
+      respond_to do |format|
+        format.html { redirect_to backend_groups_url, notice: '删除成功!' }
+      end
     end
-  end
 
-  private
-    def set_group
-      @group = Group.find(params[:id])
-    end
-    def group_params
-      params.require(:group).permit(:group_name, :memo)
-    end
+    private
+      def set_group
+        @group = Group.find(params[:id])
+      end
+      def group_params
+        params.require(:group).permit(:group_name, :memo)
+      end
+  end
 end

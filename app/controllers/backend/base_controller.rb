@@ -1,10 +1,8 @@
 module Backend
-  class ApplicationController < BaseController
+  class BaseController < ActionController::Base
     before_action :authenticate_user!
     protect_from_forgery with: :exception    
     layout 'backend'
-    
-    authorize_resource
 
     #将没有权限的请求全部重定向到404页面
     rescue_from CanCan::AccessDenied do |exception|

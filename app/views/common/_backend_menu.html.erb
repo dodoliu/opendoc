@@ -4,8 +4,16 @@
       <%= link_to '品牌管理', backend_groups_path %>  
     </li>
     <li class="<%= 'active' if request.url.include? 'members' %>">
-      <%= link_to '用户管理', backend_members_path %>
+      <%= link_to '接口调用者管理', backend_members_path %>
     </li>
+    <% if current_user.has_role? :admin %>
+    <li class="<%= 'active' if request.url.include? 'users' %>">
+      <%= link_to '用户管理', backend_users_path %>
+    </li>
+    <li class="<%= 'active' if request.url.include? 'roles' %>">
+      <%= link_to '角色管理', backend_roles_path %>
+    </li>
+    <% end %>
   </ul>
 </div>
 

@@ -28,7 +28,6 @@ new Vue
       group_id = $(target.target).attr('id').split('_')[2]
       member_id = $('#member_id').val()
       if $(target.target).attr('checked') is 'checked'
-        alert(22)
         @destory_group(group_id,member_id)
       else
         $.ajax({

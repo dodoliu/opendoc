@@ -1,0 +1,35 @@
+<%= render 'backend/shared/site_map' %>
+<%= link_to '+新增用户', new_backend_user_path, class: 'btn btn-default advanced_top' %>
+<%= render 'backend/shared/advanced_query', :locals => { :path =>backend_users_path } %>
+
+<div class="table_style">
+<table class="table">
+  <thead>
+    <tr>
+      <th>显示名</th>
+      <th>用户名</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |t| %>
+      <tr>
+        <td><%= t.display_name %></td>
+        <td><%= t.email %></td>
+        <td>
+          <% if !t.email.eql?('admin@admin.com') %>
+          <%= link_to '设为管理员', 'javascript:void(0)', class: 'edit', 'data-id': t.id, 'v-on:click': 'add_role'  %>
+          <%= link_to '禁用', backend_user_path(t.id), method: :delete, data: { confirm: '确定禁用吗?' }, class: 'edit'  %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<nav aria-label="Page navigation" class="pagination_style">
+<%= paginate @users %>
+</div>
+
+<script type='text/javascript' src='<%= asset_path 'user.js' %>'></script>

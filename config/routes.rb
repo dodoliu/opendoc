@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  # devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  devise_for :users, :controllers => {:registrations => "devise_customed/registrations"}
+
   root 'home#index'
   get 'home/interfaces' => 'home#interfaces'
   get 'home/interface_info' => 'home#interface_info'
@@ -19,5 +22,8 @@ Rails.application.routes.draw do
       put :add_group_member
     end
     resources :groups_members, only: [:index, :create, :destroy]
+    resources :users
+    resources :roles
+    resources :users_roles, only: [:create]
   end
 end

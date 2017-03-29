@@ -59,7 +59,9 @@ zh-CN:
       interface: '接口'
       interface_param: '接口参数'
       interface_response: '接口返回参数'
-      member: '用户'
+      member: '接口调用者'
+      user: '用户'
+      role: '角色'
     attributes:
       group:
         group_name: "品牌名"
@@ -83,9 +85,12 @@ zh-CN:
         response_type: '参数类型'
         response_desc: '参数描述'
       member:
-        display_name: '用户名称'
+        display_name: '调用者名称'
         expire_date: 'API有效期'
         memo: '备注'
+      user:
+        display_name: '显示名'
+        email: '账号'
   devise:
     confirmations:
       confirmed: "您的帐号已经确认，您现在已登录。"

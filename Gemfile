@@ -39,8 +39,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'uuidtools' #唯一标识
 gem 'kaminari' #分页
-gem 'devise' #登陆注册
 
+gem 'devise' #登陆注册
+gem 'cancancan' 
+gem 'rolify'
 # gem 'sidekiq'
 
 gem 'rack-mini-profiler' #监控页面性能

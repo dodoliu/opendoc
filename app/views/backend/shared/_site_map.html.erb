@@ -1,7 +1,11 @@
 <ol class="breadcrumb">
 
 <% if controller_name.eql? 'members' %>
+  <li><%= label_tag '接口调用者管理', nil, class: 'site_map_style' %></li>
+<% elsif controller_name.eql? 'users'  %>
   <li><%= label_tag '用户管理', nil, class: 'site_map_style' %></li>
+<% elsif controller_name.eql? 'roles'  %>
+  <li><%= label_tag '角色管理', nil, class: 'site_map_style' %></li>
 <% else %>
   <% if controller_name.eql? 'groups' %>
     <li><%= label_tag '品牌管理', nil, class: 'site_map_style' %></li>

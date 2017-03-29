@@ -1,3 +1,6 @@
+user = User.create(display_name: '超级管理员', email: 'admin@admin.com', password: 'admin!=123456', status: 1)
+user.add_role(:admin)
+
 if %w{test development}.include? Rails.env
   Group.create(group_name: '康师傅集团', status: 1, sid: 'o8-v-s4s-rVFhOhzj4a8RIUA3Xoc')
   Group.create(group_name: '哇哈哈集团', status: 1, sid: 'o8-v-s4GGaq_3fqrW8tEir6J7RTo')
@@ -26,4 +29,3 @@ if %w{test development}.include? Rails.env
 else 
 
 end
-

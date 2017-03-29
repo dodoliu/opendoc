@@ -1,0 +1,18 @@
+<%= render 'backend/shared/site_map' %>
+<%= form_for([:backend, @role], html:{ class: 'form-horizontal edit_style' })  do |f|%>
+
+<%= render 'backend/shared/error', :locals => { :obj => @role } %>
+
+<div class="form-group">
+    <%= f.label :name, '角色名称', class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+        <%= f.text_field :name, class: 'form-control', placeholder: '请输入角色名称' %>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-10 edit_button_style">
+      <%= f.button '提交' , class: 'btn btn-default' %>
+      <%= link_to '返回', backend_roles_path, class: 'btn btn-default' %>
+    </div>
+</div>
+<% end %>

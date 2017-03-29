@@ -32,7 +32,7 @@ module ApplicationHelper
     {e_name: 'interfaces', c_name: '接口文档管理'},
     {e_name: 'interface_params', c_name: '接口参数管理'},
     {e_name: 'interface_responses', c_name: '接口返回参数管理'},
-    {e_name: 'members', c_name: '用户管理'}
+    {e_name: 'members', c_name: '接口调用者管理'}
     ]
 
     result = ''

@@ -9,9 +9,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   # def create
-  #   puts 'nihaonihaonihaonihaonihaonihaonihaonihao'
   #   super do |resource|
-  #     resource.display_name = '1233333'
+  #     # resource.display_name = '1233333'
   #     resource.status = 1
   #   end
   # end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   # devise_for :users, controllers: { sessions: 'users/sessions' }
-
-  devise_for :users, :controllers => {:registrations => "devise_customed/registrations"}
+  devise_for :users  
 
   root 'home#index'
   get 'home/interfaces' => 'home#interfaces'

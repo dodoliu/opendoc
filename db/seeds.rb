@@ -1,4 +1,6 @@
-user = User.create(display_name: '超级管理员', email: 'admin@admin.com', password: 'admin!=123456', status: 1)
+User.create(display_name: '超级管理员', email: 'admin@admin.com', password: 'admin!=123456', status: 1, confirmed_at: Time.now)
+Role.create(name: 'admin', status: 1)
+user = User.first
 user.add_role(:admin)
 
 if %w{test development}.include? Rails.env

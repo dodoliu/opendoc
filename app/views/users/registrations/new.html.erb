@@ -23,6 +23,7 @@
           <div class="form-group">
             <%= f.submit "注册", class: 'btn btn-default' %>
           </div>
+          <%= f.hidden_field :status, value: 'active' %>
         <% end %>
         </div>
     </div>

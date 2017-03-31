@@ -1,6 +1,6 @@
 module Backend
-  class BaseController < ActionController::Base
-    before_action :authenticate_user!
+  class BaseController < ActionController::Base    
+    before_action :authenticate_user!    
     protect_from_forgery with: :exception    
     layout 'backend'
 
@@ -11,12 +11,13 @@ module Backend
 
     def execute_statement(sql)
       result = ActiveRecord::Base.connection.execute(sql)
-      puts result
+      # puts result
       if result.present?
         return result
       else
         return nil
       end
     end
+
   end
 end

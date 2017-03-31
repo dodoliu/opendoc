@@ -26,8 +26,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
 
@@ -52,6 +50,19 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  
+  #本地测试环境的发送邮件配置
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 } 
+  config.action_mailer.delivery_method = :smtp
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  #针对163的设置password的是授权码,不是登陆密码
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.163.com',
+    :port => 25,
+    :domain => '163.com',
+    :authentication => 'login',
+    :user_name => 'opendoc2017@163.com',
+    :password => 'opendoc20172' 
+  }
+
 end

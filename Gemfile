@@ -43,12 +43,12 @@ gem 'kaminari' #分页
 gem 'devise' #登陆注册
 gem 'cancancan' 
 gem 'rolify'
-# gem 'sidekiq'
+gem 'sidekiq'
 
 gem 'rack-mini-profiler' #监控页面性能
 
 gem 'redis'
-gem 'redis-namespace'
+#gem 'redis-namespace'
 gem 'redis-rails'
 # gem 'redis-rack-cache'
 

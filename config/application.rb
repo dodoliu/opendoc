@@ -17,12 +17,15 @@ module Opendoc
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|  html_tag }
 
     config.cache_store = :redis_store, {
-      host: "localhost",
-      port: 6379,
-      db: 0
+      host: Rails.application.secrets.redis_server,
+      port: Rails.application.secrets.redis_port,
+      db: Rails.application.secrets.redis_db_num,
       # password: "mysecret",
-      # namespace: "cache"
+      namespace: Rails.application.secrets.redis_namespace
     }
+
+    config.active_job.queue_name_prefix = Rails.env
+    config.active_job.queue_adapter = :sidekiq
     
   end
 

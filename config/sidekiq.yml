@@ -1,0 +1,15 @@
+:concurrency: 5
+:pidfile: tmp/pids/sidekiq.pid
+
+:queues:
+    - default
+    - [myqueue, 2]
+    - production_mailers
+    - development_mailers
+
+development:
+  :concurrency: 5
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 20

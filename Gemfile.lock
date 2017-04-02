@@ -60,6 +60,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     concurrent-ruby (1.0.5-java)
+    connection_pool (2.2.1)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -128,6 +129,8 @@ GEM
     rack (2.0.1)
     rack-mini-profiler (0.10.2)
       rack (>= 1.2.0)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -165,8 +168,6 @@ GEM
     redis-activesupport (5.0.1)
       activesupport (>= 3, < 6)
       redis-store (~> 1.2.0)
-    redis-namespace (1.5.3)
-      redis (~> 3.0, >= 3.0.4)
     redis-rack (2.0.1)
       rack (>= 2.0, < 3)
       redis-store (>= 1.2, < 1.4)
@@ -186,6 +187,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sidekiq (4.2.10)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -247,10 +253,10 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 5.0.1)
   redis
-  redis-namespace
   redis-rails
   rolify
   sass-rails (~> 5.0)
+  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

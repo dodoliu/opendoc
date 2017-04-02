@@ -24,5 +24,9 @@ Rails.application.routes.draw do
     resources :users
     resources :roles
     resources :users_roles, only: [:create]
+
+    require 'sidekiq/web'
+    mount Sidekiq::Web => 'sidekiq'
+
   end
 end
